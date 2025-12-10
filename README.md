@@ -31,18 +31,12 @@ It supports playing music from YouTube and Spotify (Tracks & Playlists) with a b
 
 ---
 
-### 📥 2. Clone the Repository
-git clone https://github.com/yourusername/buzzard-music-bot.git
-cd buzzard-music-bot
-
----
-
-### 📦 3. Install Dependencies
+### 📦 2. Install Dependencies
 pip install discord.py yt-dlp spotipy PyNaCl
 
 ---
 
-### 🎧 4. FFmpeg Setup (IMPORTANT)
+### 🎧 3. FFmpeg Setup (IMPORTANT)
 1. Download Static Build (Essentials) from https://www.gyan.dev/ffmpeg/builds/
 2. Extract the zip
 3. Open bin folder
@@ -52,7 +46,7 @@ Do NOT use shared builds
 
 ---
 
-### 🔧 5. Configuration
+### 🔧 4. Configuration
 Open main.py and set:
 
 TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
