@@ -49,9 +49,9 @@ Do NOT use shared builds
 ### 🔧 4. Configuration
 Open main.py and set:
 
-TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
-SPOTIFY_ID = 'YOUR_SPOTIFY_CLIENT_ID'
-SPOTIFY_SECRET = 'YOUR_SPOTIFY_CLIENT_SECRET'
+- TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
+- SPOTIFY_ID = 'YOUR_SPOTIFY_CLIENT_ID'
+- SPOTIFY_SECRET = 'YOUR_SPOTIFY_CLIENT_SECRET'
 
 ---
 
@@ -62,17 +62,17 @@ python main.py
 
 ## 🎮 Slash Commands
 
-/play [query]      → Play music from YouTube or Spotify
-/link [url]        → Load YouTube / Spotify playlist
-/stop              → Stop playback and clear queue
-/skip              → Skip current song
-/pause             → Pause music
-/resume            → Resume playback
-/volume [0-100]    → Adjust volume
-/loop [off/song/queue] → Set loop mode
-/shuffle           → Shuffle the queue
-/queue             → Show upcoming songs
-/seek [seconds]    → Jump to timestamp
+- /play [query]      → Play music from YouTube or Spotify
+- /link [url]        → Load YouTube / Spotify playlist
+- /stop              → Stop playback and clear queue
+- /skip              → Skip current song
+- /pause             → Pause music
+- /resume            → Resume playback
+- /volume [0-100]    → Adjust volume
+- /loop [off/song/queue] → Set loop mode
+- /shuffle           → Shuffle the queue
+- /queue             → Show upcoming songs
+- /seek [seconds]    → Jump to timestamp
 
 ---
 
@@ -85,11 +85,7 @@ https://www.gyan.dev/ffmpeg/builds/
 
 ---
 
-## 📜 License
-MIT License
-
 ⭐ Star the repo if you love music bots
-EOF
 
 ---
 
