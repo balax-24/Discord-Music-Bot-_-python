@@ -1,0 +1,1657 @@
+/* ============================================================================
+   PROGRAM 1 
+   TOPIC: Basic Control Flow (While Loop)
+============================================================================ */
+import java.util.Scanner;
+
+public class SumOfDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+        int temp = Math.abs(number);
+        int sum = 0;
+
+        while (temp > 0) {
+            sum += temp % 10;
+            temp /= 10;
+        }
+
+        System.out.println("The sum of digits in " + number + " is " + sum);
+        sc.close();
+    }
+}
+
+/* OUTPUT:
+Enter a number: 753
+The sum of digits in 753 is 15
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 2 
+   TOPIC: Looping - Fibonacci Series
+============================================================================ */
+import java.util.Scanner;
+
+public class Fibonacci {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of terms: ");
+        int n = sc.nextInt();
+        int a = 0;
+        int b = 1;
+
+        System.out.print("Fibonacci series: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+        System.out.println();
+        sc.close();
+    }
+}
+
+/* OUTPUT:
+Enter number of terms: 8
+Fibonacci series: 0 1 1 2 3 5 8 13
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 3 
+   TOPIC: Prime Numbers in a Range
+============================================================================ */
+import java.util.Scanner;
+
+public class Prime {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = sc.nextInt();
+
+        System.out.print("Prime numbers from 1 to " + n + " are: ");
+        for (int i = 2; i <= n; i++) {
+            boolean isPrime = true;
+            for (int j = 2; j * j <= i; j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+        sc.close();
+    }
+}
+
+/* OUTPUT:
+Enter the value of n: 30
+Prime numbers from 1 to 30 are: 2 3 5 7 11 13 17 19 23 29
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 4 
+   TOPIC: Array Sorting - Minimum and Maximum
+============================================================================ */
+import java.util.Arrays;
+
+public class MinMaxArray {
+    public static void main(String[] args) {
+        int[] numbers = {44, 66, 99, 77, 33, 22, 55};
+        Arrays.sort(numbers);
+        System.out.println("Smallest number: " + numbers[0]);
+        System.out.println("Largest number: " + numbers[numbers.length - 1]);
+    }
+}
+
+/* OUTPUT:
+Smallest number: 22
+Largest number: 99
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 5 
+   TOPIC: Package Creation - Balance Class
+============================================================================ */
+package MyPack;
+
+public class Balance {
+    private final String name;
+    private final double balance;
+
+    public Balance(String name, double balance) {
+        this.name = name;
+        this.balance = balance;
+    }
+
+    public void show() {
+        System.out.println(name + ": $" + balance);
+    }
+}
+
+/* OUTPUT:
+This class is used by TestBalance.java
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 6 
+   TOPIC: Package Usage - Importing User Package
+============================================================================ */
+import MyPack.Balance;
+
+public class TestBalance {
+    public static void main(String[] args) {
+        Balance account = new Balance("Sharrun", 99.98);
+        account.show();
+    }
+}
+
+/* OUTPUT:
+Sharrun: $99.98
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 7 
+   TOPIC: Inheritance - Employee Hierarchy
+============================================================================ */
+class Employee {
+    protected String name;
+    protected String address;
+    protected double salary;
+    protected String jobTitle;
+
+    Employee(String name, String address, double salary, String jobTitle) {
+        this.name = name;
+        this.address = address;
+        this.salary = salary;
+        this.jobTitle = jobTitle;
+    }
+
+    void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Job Title: " + jobTitle);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+class Manager extends Employee {
+    Manager(String name, String address, double salary) {
+        super(name, address, salary, "Manager");
+    }
+
+    void printTasks() {
+        System.out.println("Bonus: " + (salary * 0.20));
+        System.out.println("Manager performance: Excellent leadership.");
+        System.out.println("Manager is managing the entire project.\n");
+    }
+}
+
+class Developer extends Employee {
+    Developer(String name, String address, double salary) {
+        super(name, address, salary, "Developer");
+    }
+
+    void printTasks() {
+        System.out.println("Bonus: " + (salary * 0.10));
+        System.out.println("Developer performance: Good coding skills.");
+        System.out.println("Developer is developing application modules.\n");
+    }
+}
+
+class Programmer extends Employee {
+    Programmer(String name, String address, double salary) {
+        super(name, address, salary, "Programmer");
+    }
+
+    void printTasks() {
+        System.out.println("Bonus: " + (salary * 0.08));
+        System.out.println("Programmer performance: Efficient coding.");
+        System.out.println("Programmer is writing and debugging code.\n");
+    }
+}
+
+public class Company {
+    public static void main(String[] args) {
+        Manager manager = new Manager("Ravi", "Chennai", 80000);
+        Developer developer = new Developer("Anitha", "Bangalore", 60000);
+        Programmer programmer = new Programmer("Karthik", "Hyderabad", 50000);
+
+        manager.displayDetails();
+        manager.printTasks();
+
+        developer.displayDetails();
+        developer.printTasks();
+
+        programmer.displayDetails();
+        programmer.printTasks();
+    }
+}
+
+/* OUTPUT:
+Name: Ravi
+Address: Chennai
+Job Title: Manager
+Salary: 80000.0
+Bonus: 16000.0
+Manager performance: Excellent leadership.
+Manager is managing the entire project.
+
+Name: Anitha
+Address: Bangalore
+Job Title: Developer
+Salary: 60000.0
+Bonus: 6000.0
+Developer performance: Good coding skills.
+Developer is developing application modules.
+
+Name: Karthik
+Address: Hyderabad
+Job Title: Programmer
+Salary: 50000.0
+Bonus: 4000.0
+Programmer performance: Efficient coding.
+Programmer is writing and debugging code.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 8 
+   TOPIC: Abstract Class - Area of Shapes
+============================================================================ */
+abstract class Shape {
+    protected int a;
+    protected int b;
+
+    Shape(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    abstract void printArea();
+}
+
+class Rectangle extends Shape {
+    Rectangle(int length, int breadth) {
+        super(length, breadth);
+    }
+
+    @Override
+    void printArea() {
+        System.out.println("Area of Rectangle = " + (a * b));
+    }
+}
+
+class Triangle extends Shape {
+    Triangle(int base, int height) {
+        super(base, height);
+    }
+
+    @Override
+    void printArea() {
+        System.out.println("Area of Triangle = " + (0.5 * a * b));
+    }
+}
+
+class Circle extends Shape {
+    Circle(int radius) {
+        super(radius, 0);
+    }
+
+    @Override
+    void printArea() {
+        System.out.println("Area of Circle = " + (3.14 * a * a));
+    }
+}
+
+public class Circle1 {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(10, 5);
+        Shape triangle = new Triangle(6, 4);
+        Shape circle = new Circle(7);
+
+        rectangle.printArea();
+        triangle.printArea();
+        circle.printArea();
+    }
+}
+
+/* OUTPUT:
+Area of Rectangle = 50
+Area of Triangle = 12.0
+Area of Circle = 153.86
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 9 
+   TOPIC: String Handling Functions
+============================================================================ */
+public class StringDemo {
+    public static void main(String[] args) {
+        String s = "Sri Sairam Engineering College - Department of CSE";
+        System.out.println("String length = " + s.length());
+        System.out.println("Character at 3rd position = " + s.charAt(3));
+        System.out.println("Substring = " + s.substring(3));
+        System.out.println("Substring = " + s.substring(2, 5));
+
+        String s1 = "Sairam";
+        String s2 = "II CSE C";
+        String s4 = "Learn Share Learn";
+
+        System.out.println("Concatenated string = " + s1.concat(s2));
+        System.out.println("Index of Share = " + s4.indexOf("Share"));
+        System.out.println("Index of a = " + s4.indexOf('a', 3));
+        System.out.println("Checking Equality = " + "Sairam".equals("Sairam"));
+        System.out.println("Checking Equality = " + "sairam".equals("Sairam"));
+        System.out.println("Checking Equality = " + "saiRaM".equalsIgnoreCase("sairam"));
+        System.out.println("Compare result = " + s1.compareTo(s2));
+        System.out.println("Lower Case = " + "CSE C II Year".toLowerCase());
+        System.out.println("Upper Case = " + "II Year cse C".toUpperCase());
+        System.out.println("Trimmed = " + " Learn Share Learn ".trim());
+        System.out.println("Replaced C with I = " + "Sairam CSE Dept".replace('C', 'I'));
+    }
+}
+
+/* OUTPUT:
+String length = 50
+Character at 3rd position =  
+Substring =  Sairam Engineering College - Department of CSE
+Substring = i S
+Concatenated string = SairamII CSE C
+Index of Share = 6
+Index of a = 5
+Checking Equality = true
+Checking Equality = false
+Checking Equality = true
+Compare result = 10
+Lower Case = cse c ii year
+Upper Case = II YEAR CSE C
+Trimmed = Learn Share Learn
+Replaced C with I = Sairam ISE Dept
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 10 
+   TOPIC: User Defined Exception
+============================================================================ */
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class VotingSystem {
+    public static void main(String[] args) {
+        int age = 16;
+
+        try {
+            if (age < 18) {
+                throw new InvalidAgeException("Invalid Age! You are not eligible to vote.");
+            }
+            System.out.println("You are eligible to vote.");
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+/* OUTPUT:
+Invalid Age! You are not eligible to vote.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 11 
+   TOPIC: Interface and Stack Overflow Exception
+============================================================================ */
+interface StackADT {
+    void push(int x);
+
+    int pop();
+}
+
+class ArrayStack implements StackADT {
+    private final int[] stack;
+    private int top = -1;
+
+    ArrayStack(int size) {
+        stack = new int[size];
+    }
+
+    @Override
+    public void push(int x) {
+        if (top == stack.length - 1) {
+            throw new RuntimeException("Stack Overflow");
+        }
+        stack[++top] = x;
+    }
+
+    @Override
+    public int pop() {
+        if (top == -1) {
+            throw new RuntimeException("Stack Underflow");
+        }
+        return stack[top--];
+    }
+}
+
+public class StackTest {
+    public static void main(String[] args) {
+        ArrayStack stack = new ArrayStack(1);
+        try {
+            stack.push(10);
+            stack.push(20);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+/* OUTPUT:
+Stack Overflow
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 12 
+   TOPIC: File Handling - Character Stream Read
+============================================================================ */
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReadExample {
+    public static void main(String[] args) {
+        try (FileReader reader = new FileReader("sample_input.txt")) {
+            System.out.println("File opened successfully.");
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            System.out.println("\nFile closed successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found.");
+        } catch (IOException e) {
+            System.out.println("Error: An I/O error occurred.");
+        }
+    }
+}
+
+/* OUTPUT:
+File opened successfully.
+Java file read example.
+This sample file is used by FileReadExample.java.
+File closed successfully.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 13 
+   TOPIC: File Handling - Read, Convert and Write
+============================================================================ */
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FileUppercaseCopy {
+    public static void main(String[] args) {
+        Path input = Paths.get("input.txt");
+        Path output = Paths.get("output.txt");
+
+        try {
+            List<String> upperLines = Files.readAllLines(input)
+                    .stream()
+                    .map(String::toUpperCase)
+                    .collect(Collectors.toList());
+            Files.write(output, upperLines);
+            System.out.println("Done.");
+        } catch (IOException e) {
+            System.out.println("File processing error: " + e.getMessage());
+        }
+    }
+}
+
+/* OUTPUT:
+Done.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 14 
+   TOPIC: File Properties Inspection
+============================================================================ */
+import java.io.File;
+import java.util.Scanner;
+
+public class FileInfo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the file name: ");
+        File file = new File(sc.nextLine());
+
+        if (file.exists()) {
+            System.out.println("File exists: Yes");
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: " + file.canWrite());
+            System.out.println("Type: " + (file.isDirectory() ? "Directory" : "Regular File"));
+            System.out.println("Length: " + file.length() + " bytes");
+        } else {
+            System.out.println("File exists: No");
+        }
+        sc.close();
+    }
+}
+
+/* OUTPUT:
+Enter the file name: input.txt
+File exists: Yes
+Readable: true
+Writable: true
+Type: Regular File
+Length: depends on file content
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 15 
+   TOPIC: Multithreading - Sum of Array
+============================================================================ */
+class SumThread extends Thread {
+    private final int[] array;
+    private final int start;
+    private final int end;
+    int sum;
+
+    SumThread(int[] array, int start, int end) {
+        this.array = array;
+        this.start = start;
+        this.end = end;
+    }
+
+    @Override
+    public void run() {
+        for (int i = start; i < end; i++) {
+            sum += array[i];
+        }
+    }
+}
+
+public class MultiThreadArraySum {
+    public static void main(String[] args) throws InterruptedException {
+        int[] numbers = {10, 20, 30, 40, 50, 60, 70, 80};
+        int mid = numbers.length / 2;
+
+        SumThread t1 = new SumThread(numbers, 0, mid);
+        SumThread t2 = new SumThread(numbers, mid, numbers.length);
+
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+
+        System.out.println("Sum of array elements: " + (t1.sum + t2.sum));
+    }
+}
+
+/* OUTPUT:
+Sum of array elements: 360
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 16 
+   TOPIC: Thread Synchronization - Producer Consumer
+============================================================================ */
+class SharedBuffer {
+    private int data;
+    private boolean available;
+
+    synchronized void produce(int value) throws InterruptedException {
+        while (available) {
+            wait();
+        }
+        data = value;
+        available = true;
+        System.out.println("Produced: " + data);
+        notifyAll();
+    }
+
+    synchronized void consume() throws InterruptedException {
+        while (!available) {
+            wait();
+        }
+        System.out.println("Consumed: " + data);
+        available = false;
+        notifyAll();
+    }
+}
+
+public class ProducerConsumer {
+    public static void main(String[] args) {
+        SharedBuffer buffer = new SharedBuffer();
+
+        new Thread(() -> {
+            try {
+                for (int i = 1; i <= 5; i++) {
+                    buffer.produce(i);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+
+        new Thread(() -> {
+            try {
+                for (int i = 1; i <= 5; i++) {
+                    buffer.consume();
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+    }
+}
+
+/* OUTPUT:
+Produced: 1
+Consumed: 1
+Produced: 2
+Consumed: 2
+Produced: 3
+Consumed: 3
+Produced: 4
+Consumed: 4
+Produced: 5
+Consumed: 5
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 17 
+   TOPIC: Multithreading - Parallel Execution
+============================================================================ */
+class MyThread extends Thread {
+    private final String message;
+
+    MyThread(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(message);
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+
+public class AlternateThread {
+    public static void main(String[] args) {
+        new MyThread("Thread 1 is running").start();
+        new MyThread("Thread 2 is running").start();
+    }
+}
+
+/* OUTPUT:
+Thread 1 is running
+Thread 2 is running
+...
+(Messages from both threads appear alternately)
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 18 
+   TOPIC: Generics - Reverse a List
+============================================================================ */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ReverseListExample {
+    public static <T> List<T> reverseList(List<T> list) {
+        List<T> reversed = new ArrayList<>();
+        for (int i = list.size() - 1; i >= 0; i--) {
+            reversed.add(list.get(i));
+        }
+        return reversed;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        System.out.println("Original Integer List: " + numbers);
+        System.out.println("Reversed Integer List: " + reverseList(numbers));
+    }
+}
+
+/* OUTPUT:
+Original Integer List: [1, 2, 3, 4, 5]
+Reversed Integer List: [5, 4, 3, 2, 1]
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 19 
+   TOPIC: Generics - Count Occurrences
+============================================================================ */
+import java.util.Arrays;
+import java.util.List;
+
+public class GenericOccurrence {
+    public static <T> int countOccurrences(List<T> list, T target) {
+        int count = 0;
+        for (T item : list) {
+            if (item.equals(target)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(10, 20, 10, 30, 10);
+        System.out.println("Number of occurrences: " + countOccurrences(nums, 10));
+    }
+}
+
+/* OUTPUT:
+Number of occurrences: 3
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 20 
+   TOPIC: Swing - Background Color Changer
+============================================================================ */
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+public class ColorChangerGUI {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Color Changer");
+            JPanel colorPanel = new JPanel();
+            JPanel buttonPanel = new JPanel();
+
+            JButton red = new JButton("Red");
+            JButton green = new JButton("Green");
+            JButton blue = new JButton("Blue");
+
+            red.addActionListener(e -> colorPanel.setBackground(Color.RED));
+            green.addActionListener(e -> colorPanel.setBackground(Color.GREEN));
+            blue.addActionListener(e -> colorPanel.setBackground(Color.BLUE));
+
+            buttonPanel.add(red);
+            buttonPanel.add(green);
+            buttonPanel.add(blue);
+
+            frame.add(colorPanel, BorderLayout.CENTER);
+            frame.add(buttonPanel, BorderLayout.SOUTH);
+            frame.setSize(300, 200);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        });
+    }
+}
+
+/* OUTPUT:
+A Swing window opens with Red, Green and Blue buttons.
+Clicking a button changes the panel background color.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 21 
+   TOPIC: Swing - Simple Calculator
+============================================================================ */
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
+public class Calculator extends JFrame {
+    private final JTextField textField = new JTextField();
+    private double num1;
+    private String operator = "";
+
+    public Calculator() {
+        setTitle("Calculator");
+        setLayout(new BorderLayout());
+        add(textField, BorderLayout.NORTH);
+
+        JPanel panel = new JPanel(new GridLayout(4, 4, 5, 5));
+        String[] buttons = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "C", "0", "=", "+"};
+
+        for (String label : buttons) {
+            JButton button = new JButton(label);
+            button.addActionListener(e -> handleInput(e.getActionCommand()));
+            panel.add(button);
+        }
+
+        add(panel, BorderLayout.CENTER);
+        setSize(250, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    private void handleInput(String command) {
+        if (command.matches("\\d")) {
+            textField.setText(textField.getText() + command);
+        } else if ("C".equals(command)) {
+            textField.setText("");
+            num1 = 0;
+            operator = "";
+        } else if ("=".equals(command)) {
+            double num2 = Double.parseDouble(textField.getText());
+            double result = 0;
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    result = num2 == 0 ? 0 : num1 / num2;
+                    break;
+                default:
+                    result = num2;
+            }
+            textField.setText(String.valueOf(result));
+        } else {
+            num1 = Double.parseDouble(textField.getText());
+            operator = command;
+            textField.setText("");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Calculator::new);
+    }
+}
+
+/* OUTPUT:
+A calculator window opens.
+Example: 7 + 3 = 10.0
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 22 
+   TOPIC: Swing - Registration Form
+============================================================================ */
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
+public class RegForm {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Registration Form");
+            frame.setLayout(new GridLayout(3, 2, 5, 5));
+
+            JTextField nameField = new JTextField();
+            JComboBox<String> courseBox = new JComboBox<>(new String[] {"B.Tech", "MBA", "MCA"});
+            JButton submit = new JButton("Submit");
+
+            submit.addActionListener(e -> JOptionPane.showMessageDialog(
+                    frame,
+                    "Registered: " + nameField.getText() + " - " + courseBox.getSelectedItem()));
+
+            frame.add(new JLabel("Name:"));
+            frame.add(nameField);
+            frame.add(new JLabel("Course:"));
+            frame.add(courseBox);
+            frame.add(new JLabel(""));
+            frame.add(submit);
+
+            frame.setSize(320, 160);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        });
+    }
+}
+
+/* OUTPUT:
+A registration form window opens.
+After clicking Submit, a message dialog shows the entered name and course.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 23 
+   TOPIC: Swing - Digital Watch
+============================================================================ */
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+
+public class DigitalWatch extends JFrame {
+    public DigitalWatch() {
+        setTitle("Digital Watch");
+        JLabel timeLabel = new JLabel("", SwingConstants.CENTER);
+        timeLabel.setFont(timeLabel.getFont().deriveFont(30f));
+        add(timeLabel);
+
+        Timer timer = new Timer(1000, e ->
+                timeLabel.setText(new SimpleDateFormat("HH:mm:ss").format(new Date())));
+        timer.start();
+
+        setSize(250, 100);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(DigitalWatch::new);
+    }
+}
+
+/* OUTPUT:
+A digital watch window opens and displays the current time in HH:mm:ss format.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 24 
+   TOPIC: Swing - Inventory Table
+============================================================================ */
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
+public class InventorySystem {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Inventory System");
+            DefaultTableModel model = new DefaultTableModel(new String[] {"ID", "Item", "Qty"}, 0);
+            JTable table = new JTable(model);
+
+            JPanel panel = new JPanel();
+            JTextField idField = new JTextField(5);
+            JTextField nameField = new JTextField(10);
+            JTextField qtyField = new JTextField(5);
+            JButton addButton = new JButton("Add");
+
+            addButton.addActionListener(e -> {
+                model.addRow(new Object[] {idField.getText(), nameField.getText(), qtyField.getText()});
+                idField.setText("");
+                nameField.setText("");
+                qtyField.setText("");
+            });
+
+            panel.add(new JLabel("ID:"));
+            panel.add(idField);
+            panel.add(new JLabel("Item:"));
+            panel.add(nameField);
+            panel.add(new JLabel("Qty:"));
+            panel.add(qtyField);
+            panel.add(addButton);
+
+            frame.add(panel, BorderLayout.NORTH);
+            frame.add(new JScrollPane(table), BorderLayout.CENTER);
+            frame.setSize(500, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        });
+    }
+}
+
+/* OUTPUT:
+An inventory window opens.
+Entered item details are added as rows in the table.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 25 
+   TOPIC: Lambda Expression - Sorting List
+============================================================================ */
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class SortNamesLambda {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Ram", "Arun", "Bala", "Kumar");
+        Collections.sort(names, String::compareTo);
+        System.out.println("Sorted List: " + names);
+    }
+}
+
+/* OUTPUT:
+Sorted List: [Arun, Bala, Kumar, Ram]
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 26 
+   TOPIC: Stream API - Double List Values
+============================================================================ */
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class DoubleListUsingStream {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> result = numbers.stream()
+                .map(x -> x * 2)
+                .collect(Collectors.toList());
+        System.out.println("Doubled List: " + result);
+    }
+}
+
+/* OUTPUT:
+Doubled List: [2, 4, 6, 8, 10]
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 27 
+   TOPIC: Lambda - Filter Even Numbers
+============================================================================ */
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class EvenNumbersFilter {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        list.removeIf(x -> x % 2 != 0);
+        System.out.println("Even Numbers: " + list);
+    }
+}
+
+/* OUTPUT:
+Even Numbers: [2, 4, 6]
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 28 
+   TOPIC: forEach - Concatenate Strings
+============================================================================ */
+import java.util.Arrays;
+import java.util.List;
+
+public class ConcatenateWords {
+    public static void main(String[] args) {
+        List<String> words = Arrays.asList("Java", "is", "easy");
+        StringBuilder builder = new StringBuilder();
+        words.forEach(word -> builder.append(word).append(" "));
+        System.out.println("Concatenated String: " + builder.toString().trim());
+    }
+}
+
+/* OUTPUT:
+Concatenated String: Java is easy
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 29 
+   TOPIC: Stream API - Square Numbers
+============================================================================ */
+import java.util.stream.Stream;
+
+public class SquareStreamDemo {
+    public static void main(String[] args) {
+        Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5);
+        numbers.map(x -> x * x).forEach(x -> System.out.print(x + " "));
+        System.out.println();
+    }
+}
+
+/* OUTPUT:
+1 4 9 16 25
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 30 
+   TOPIC: Sorting List in Ascending Order Using Exception
+============================================================================ */
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+class EmptyListException extends Exception {
+    EmptyListException(String message) {
+        super(message);
+    }
+}
+
+public class SortListUsingException {
+    public static void sortAscending(List<Integer> list) throws EmptyListException {
+        if (list.isEmpty()) {
+            throw new EmptyListException("List is empty. Cannot sort.");
+        }
+        Collections.sort(list);
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(45, 12, 78, 3, 29));
+        try {
+            sortAscending(numbers);
+            System.out.println("Sorted List in Ascending Order: " + numbers);
+        } catch (EmptyListException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+/* OUTPUT:
+Sorted List in Ascending Order: [3, 12, 29, 45, 78]
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 31 
+   TOPIC: Applet - Different Shapes with Fill Color
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class ShapeColorApplet extends Applet {
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.RED);
+        g.fillRect(30, 40, 120, 80);
+        g.drawString("Rectangle", 55, 135);
+
+        g.setColor(Color.BLUE);
+        g.fillOval(190, 40, 100, 100);
+        g.drawString("Circle", 220, 155);
+
+        g.setColor(Color.GREEN);
+        int[] x = {80, 140, 20};
+        int[] y = {230, 320, 320};
+        g.fillPolygon(x, y, 3);
+        g.drawString("Triangle", 55, 345);
+
+        g.setColor(Color.ORANGE);
+        g.fillRoundRect(200, 220, 120, 80, 30, 30);
+        g.drawString("Round Rectangle", 205, 325);
+    }
+}
+
+/* OUTPUT:
+Applet window displays a filled rectangle, circle, triangle and round rectangle in different colors.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 32 
+   TOPIC: Applet - X and Y Coordinates of Mouse
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+public class MouseCoordinatesApplet extends Applet implements MouseMotionListener {
+    private int x;
+    private int y;
+
+    @Override
+    public void init() {
+        addMouseMotionListener(this);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawString("Move the mouse inside the applet", 20, 30);
+        g.drawString("X = " + x + ", Y = " + y, 20, 60);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        x = e.getX();
+        y = e.getY();
+        repaint();
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        x = e.getX();
+        y = e.getY();
+        repaint();
+    }
+}
+
+/* OUTPUT:
+Move the mouse inside the applet.
+The current X and Y coordinates are displayed on the screen.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 33 
+   TOPIC: Swing - Ball Bouncing in JPanel
+============================================================================ */
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+
+public class BallBouncingPanel extends JPanel {
+    private int x = 20;
+    private int y = 20;
+    private int dx = 3;
+    private int dy = 3;
+
+    public BallBouncingPanel() {
+        setBackground(Color.WHITE);
+        Timer timer = new Timer(20, e -> moveBall());
+        timer.start();
+    }
+
+    private void moveBall() {
+        x += dx;
+        y += dy;
+
+        if (x <= 0 || x >= getWidth() - 30) {
+            dx = -dx;
+        }
+        if (y <= 0 || y >= getHeight() - 30) {
+            dy = -dy;
+        }
+        repaint();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.RED);
+        g.fillOval(x, y, 30, 30);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Ball Bouncing in JPanel");
+            frame.add(new BallBouncingPanel());
+            frame.setSize(400, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        });
+    }
+}
+
+/* OUTPUT:
+A window opens with a red ball bouncing continuously inside the panel.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 34 
+   TOPIC: Applet Viewer - Key Events
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class KeyEventsApplet extends Applet implements KeyListener {
+    private String message = "Press any key";
+
+    @Override
+    public void init() {
+        setBackground(Color.WHITE);
+        addKeyListener(this);
+        setFocusable(true);
+        requestFocus();
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawString(message, 20, 50);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        message = "Key Typed: " + e.getKeyChar();
+        repaint();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        message = "Key Code Pressed: " + e.getKeyCode();
+        repaint();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        message = "Key Released: " + e.getKeyChar();
+        repaint();
+    }
+}
+
+/* OUTPUT:
+Press any key inside the applet viewer.
+The applet displays the typed, pressed, or released key information.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 35 
+   TOPIC: Applet Event Handling - Cursor Position
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class CursorPositionApplet extends Applet implements MouseListener {
+    private String message = "Click inside the applet";
+
+    @Override
+    public void init() {
+        addMouseListener(this);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.drawString(message, 20, 50);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        message = "Cursor Position: (" + e.getX() + ", " + e.getY() + ")";
+        repaint();
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
+}
+
+/* OUTPUT:
+Click inside the applet.
+The cursor position is displayed as (x, y).
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 36 
+   TOPIC: Applet - Button Event Handling
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class EventHandlingApplet extends Applet implements ActionListener {
+    private Label label;
+
+    @Override
+    public void init() {
+        label = new Label("Click the button");
+        Button button = new Button("Click Me");
+        button.addActionListener(this);
+        add(label);
+        add(button);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        label.setText("Button clicked successfully");
+    }
+}
+
+/* OUTPUT:
+Click the button in the applet.
+The label changes to: Button clicked successfully
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 37 
+   TOPIC: Applet - Paint Brush
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PaintBrushApplet extends Applet implements MouseListener, MouseMotionListener {
+    private final List<int[]> points = new ArrayList<>();
+
+    @Override
+    public void init() {
+        setBackground(Color.WHITE);
+        addMouseListener(this);
+        addMouseMotionListener(this);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.BLUE);
+        for (int i = 1; i < points.size(); i++) {
+            int[] p1 = points.get(i - 1);
+            int[] p2 = points.get(i);
+            if (p1[2] == 1 && p2[2] == 1) {
+                g.drawLine(p1[0], p1[1], p2[0], p2[1]);
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        points.add(new int[] {e.getX(), e.getY(), 0});
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        points.add(new int[] {e.getX(), e.getY(), 1});
+        repaint();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        points.add(new int[] {e.getX(), e.getY(), 0});
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
+}
+
+/* OUTPUT:
+Drag the mouse inside the applet.
+Freehand drawing appears like a paint brush.
+
+*/
+
+
+/* ============================================================================
+   PROGRAM 38 
+   TOPIC: Applet Viewer - Student Report Form
+============================================================================ */
+import java.applet.Applet;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Choice;
+import java.awt.FlowLayout;
+import java.awt.Label;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class StudentReportFormApplet extends Applet implements ActionListener {
+    private TextField nameField;
+    private TextField regNoField;
+    private Choice departmentChoice;
+    private CheckboxGroup gradeGroup;
+    private TextArea resultArea;
+
+    @Override
+    public void init() {
+        setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+
+        nameField = new TextField(20);
+        regNoField = new TextField(20);
+        departmentChoice = new Choice();
+        departmentChoice.add("CSE");
+        departmentChoice.add("IT");
+        departmentChoice.add("ECE");
+
+        gradeGroup = new CheckboxGroup();
+        Checkbox aGrade = new Checkbox("A", gradeGroup, true);
+        Checkbox bGrade = new Checkbox("B", gradeGroup, false);
+        Checkbox cGrade = new Checkbox("C", gradeGroup, false);
+
+        Button submit = new Button("Generate Report");
+        submit.addActionListener(this);
+
+        resultArea = new TextArea(6, 30);
+
+        add(new Label("Student Name:"));
+        add(nameField);
+        add(new Label("Register Number:"));
+        add(regNoField);
+        add(new Label("Department:"));
+        add(departmentChoice);
+        add(new Label("Grade:"));
+        add(aGrade);
+        add(bGrade);
+        add(cGrade);
+        add(submit);
+        add(resultArea);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        resultArea.setText(
+                "Student Report\n"
+                        + "Name: " + nameField.getText() + "\n"
+                        + "Register No: " + regNoField.getText() + "\n"
+                        + "Department: " + departmentChoice.getSelectedItem() + "\n"
+                        + "Grade: " + gradeGroup.getSelectedCheckbox().getLabel());
+    }
+}
+
+/* OUTPUT:
+An applet form opens for student details.
+After clicking Generate Report, the student report is shown in the text area.
+
+*/
+
+
